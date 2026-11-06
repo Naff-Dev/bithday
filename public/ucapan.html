@@ -594,7 +594,7 @@
     /* Segmented selector for type */
     .type-segmented-control {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 6px;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--border-subtle);
@@ -602,13 +602,19 @@
       padding: 4px;
     }
 
+    @media (max-width: 480px) {
+      .type-segmented-control {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     .type-segment-btn {
       background: transparent;
       border: 1px solid transparent;
       color: var(--tx-muted);
-      padding: 9px 8px;
+      padding: 9px 6px;
       border-radius: 7px;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 500;
       cursor: pointer;
       text-align: center;
@@ -626,6 +632,264 @@
       color: #ffffff;
       font-weight: 600;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Upload Dropzone */
+    .upload-dropzone {
+      position: relative;
+      border: 1px dashed rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      padding: 24px 16px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .upload-dropzone:hover,
+    .upload-dropzone.dragover {
+      border-color: var(--r2);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .file-hidden-input {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      z-index: 5;
+    }
+
+    .dropzone-prompt {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      pointer-events: none;
+    }
+
+    .upload-title {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--tx-primary);
+    }
+
+    .upload-hint {
+      font-size: 11.5px;
+      color: var(--tx-muted);
+    }
+
+    .preview-box {
+      position: relative;
+      z-index: 6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .preview-box img {
+      max-height: 170px;
+      max-width: 100%;
+      border-radius: 8px;
+      object-fit: contain;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .preview-box video {
+      max-height: 180px;
+      max-width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+      background: #000;
+    }
+
+    .preview-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      width: 100%;
+      font-size: 12px;
+      color: var(--tx-secondary);
+    }
+
+    .btn-remove-media {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-subtle);
+      color: var(--tx-secondary);
+      border-radius: 6px;
+      padding: 5px 12px;
+      font-size: 11.5px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-remove-media:hover {
+      background: rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+    }
+
+    /* Voice Recorder Card */
+    .voice-recorder-card {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 22px 16px;
+      text-align: center;
+    }
+
+    .voice-state-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .voice-hint-text {
+      font-size: 13px;
+      color: var(--tx-secondary);
+      max-width: 320px;
+      line-height: 1.5;
+    }
+
+    .btn-record-start {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(197, 34, 51, 0.18);
+      border: 1px solid rgba(197, 34, 51, 0.65);
+      color: #ffffff;
+      padding: 11px 22px;
+      border-radius: 999px;
+      font-size: 13.5px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-record-start:hover {
+      background: rgba(197, 34, 51, 0.32);
+      transform: scale(1.02);
+    }
+
+    .record-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--red);
+      border-radius: 50%;
+    }
+
+    .voice-alt-upload {
+      font-size: 12px;
+      color: var(--tx-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .upload-alt-link {
+      color: var(--go);
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .recording-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #ff6b6b;
+      letter-spacing: 0.04em;
+    }
+
+    .pulsing-red-circle {
+      width: 12px;
+      height: 12px;
+      background: #ff4757;
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7);
+      animation: pulseRecord 1.2s infinite;
+    }
+
+    @keyframes pulseRecord {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(255, 71, 87, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 71, 87, 0);
+      }
+    }
+
+    .recording-timer {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 34px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: #ffffff;
+    }
+
+    .btn-record-stop {
+      background: var(--red);
+      border: none;
+      color: #ffffff;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-record-stop:hover {
+      background: #c20811;
+    }
+
+    .audio-preview-wrap {
+      width: 100%;
+    }
+
+    .audio-preview-wrap audio {
+      width: 100%;
+      height: 38px;
+      border-radius: 6px;
+    }
+
+    .voice-preview-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      gap: 12px;
+    }
+
+    .recorded-tag {
+      font-size: 12.5px;
+      color: var(--go);
+      font-weight: 500;
+    }
+
+    .btn-rerecord {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--tx-secondary);
+      border-radius: 6px;
+      padding: 5px 12px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-rerecord:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
     }
 
     .form-group input:focus,
@@ -794,18 +1058,97 @@
             <button type="button" class="type-segment-btn active" data-type="text">Pesan Tertulis</button>
             <button type="button" class="type-segment-btn" data-type="photo">Foto Kenangan</button>
             <button type="button" class="type-segment-btn" data-type="video">Video Ucapan</button>
+            <button type="button" class="type-segment-btn" data-type="voice">Pesan Suara</button>
           </div>
           <input type="hidden" id="form-tipe" value="text">
         </div>
-        <div class="form-group" id="form-media-group" style="display:none;">
-          <label for="form-media" id="form-media-label">File Media Galeri</label>
-          <input type="text" id="form-media" placeholder="Contoh: galeri/10.webp atau galeri/2.mp4">
+
+        <!-- UPLOAD FOTO -->
+        <div class="form-group" id="group-photo" style="display:none;">
+          <label>Unggah Foto Kenangan</label>
+          <div class="upload-dropzone" id="dropzone-photo">
+            <input type="file" id="file-photo" accept="image/*" class="file-hidden-input">
+            <div class="dropzone-prompt" id="prompt-photo">
+              <span class="upload-title">Pilih atau Seret Foto ke Sini</span>
+              <span class="upload-hint">Format JPG, PNG, WEBP (Maks 10MB)</span>
+            </div>
+            <div class="preview-box" id="preview-photo" style="display:none;">
+              <img id="preview-photo-img" src="" alt="Pratinjau Foto">
+              <div class="preview-info">
+                <span id="preview-photo-name"></span>
+                <button type="button" class="btn-remove-media" id="btn-remove-photo">Ganti Foto</button>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- UPLOAD VIDEO -->
+        <div class="form-group" id="group-video" style="display:none;">
+          <label>Unggah Video Ucapan</label>
+          <div class="upload-dropzone" id="dropzone-video">
+            <input type="file" id="file-video" accept="video/*" class="file-hidden-input">
+            <div class="dropzone-prompt" id="prompt-video">
+              <span class="upload-title">Pilih atau Seret Video ke Sini</span>
+              <span class="upload-hint">Format MP4, MOV, WEBM (Maks 50MB)</span>
+            </div>
+            <div class="preview-box" id="preview-video" style="display:none;">
+              <video id="preview-video-player" controls playsinline></video>
+              <div class="preview-info">
+                <span id="preview-video-name"></span>
+                <button type="button" class="btn-remove-media" id="btn-remove-video">Ganti Video</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- REKAM SUARA / MIC -->
+        <div class="form-group" id="group-voice" style="display:none;">
+          <label>Rekam Pesan Suara</label>
+          <div class="voice-recorder-card">
+            <!-- State 1: Idle -->
+            <div id="voice-state-idle" class="voice-state-box">
+              <p class="voice-hint-text">Tekan tombol di bawah untuk merekam suaramu langsung melalui mikrofon</p>
+              <button type="button" class="btn-record-start" id="btn-start-record">
+                <span class="record-dot"></span>
+                Mulai Rekam Suara
+              </button>
+              <div class="voice-alt-upload">
+                <span>atau</span>
+                <label for="file-voice" class="upload-alt-link">unggah berkas audio</label>
+                <input type="file" id="file-voice" accept="audio/*" class="file-hidden-input">
+              </div>
+            </div>
+
+            <!-- State 2: Recording -->
+            <div id="voice-state-recording" class="voice-state-box" style="display:none;">
+              <div class="recording-badge">
+                <span class="pulsing-red-circle"></span>
+                Merekam Suara...
+              </div>
+              <div class="recording-timer" id="recording-timer">00:00</div>
+              <button type="button" class="btn-record-stop" id="btn-stop-record">
+                Selesai Rekam
+              </button>
+            </div>
+
+            <!-- State 3: Preview -->
+            <div id="voice-state-preview" class="voice-state-box" style="display:none;">
+              <div class="audio-preview-wrap">
+                <audio id="voice-preview-player" controls></audio>
+              </div>
+              <div class="voice-preview-actions">
+                <span class="recorded-tag" id="recorded-duration-tag">Terekam</span>
+                <button type="button" class="btn-rerecord" id="btn-rerecord">Rekam Ulang</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="form-group">
-          <label for="form-pesan">Isi Ucapan & Doa</label>
+          <label for="form-pesan">Isi Pesan & Doa</label>
           <textarea id="form-pesan" rows="4" required placeholder="Tuliskan ucapan dan doa tulusmu di sini..."></textarea>
         </div>
-        <button type="submit" class="btn-submit">Simpan ke Kotak Kenangan</button>
+        <button type="submit" class="btn-submit" id="btn-submit-wish">Simpan ke Kotak Kenangan</button>
       </form>
     </div>
   </div>
@@ -854,6 +1197,12 @@
       renderGrid();
     };
 
+    const formatMediaUrl = (url) => {
+      if (!url) return '';
+      if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('/')) return url;
+      return '/' + url;
+    };
+
     // Render Masonry Cards
     const renderGrid = () => {
       const filtered = currentFilter === 'all'
@@ -875,12 +1224,13 @@
 
       grid.innerHTML = filtered.map((item, index) => {
         const styleDelay = `style="animation-delay: ${index * 0.05}s;"`;
+        const mediaSrc = formatMediaUrl(item.media);
 
         if (item.tipe === 'photo') {
           return `
             <div class="wish-card card-photo" ${styleDelay} onclick="openDetail('${item.id}')">
               <div class="card-media">
-                <img src="${item.media}" alt="Kenangan ${item.nama}" loading="lazy">
+                <img src="${mediaSrc}" alt="Kenangan ${item.nama}" loading="lazy">
                 <span class="media-type-badge">Foto</span>
               </div>
               <div class="card-body">
@@ -899,7 +1249,7 @@
           return `
             <div class="wish-card card-video" ${styleDelay} onclick="openDetail('${item.id}')">
               <div class="card-media">
-                <video src="${item.media}" poster="${item.poster || ''}" muted loop playsinline preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause()"></video>
+                <video src="${mediaSrc}" poster="${item.poster || ''}" muted loop playsinline preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause()"></video>
                 <span class="media-type-badge">Video</span>
               </div>
               <div class="card-body">
@@ -922,7 +1272,7 @@
                   <div class="card-author">${item.nama}</div>
                   <div class="card-relation">${item.hubungan || ''}</div>
                 </div>
-                <div class="voice-control-box" onclick="event.stopPropagation(); toggleInlineVoice('${item.id}', '${item.media}')">
+                <div class="voice-control-box" onclick="event.stopPropagation(); toggleInlineVoice('${item.id}', '${mediaSrc}')">
                   <button class="voice-play-btn" id="voice-btn-${item.id}" aria-label="Putar rekaman suara">▶</button>
                   <div class="waveform-visualizer">
                     <span class="wave-bar" style="height: 6px;"></span>
@@ -1044,15 +1394,17 @@
       detailAudio.pause();
       detailAudio.style.display = 'none';
 
+      const mediaSrc = formatMediaUrl(item.media);
+
       if (item.tipe === 'photo') {
         detailMediaContainer.style.display = 'block';
-        detailMediaContainer.innerHTML = `<img src="${item.media}" alt="${item.nama}">`;
+        detailMediaContainer.innerHTML = `<img src="${mediaSrc}" alt="${item.nama}">`;
       } else if (item.tipe === 'video') {
         detailMediaContainer.style.display = 'block';
-        detailMediaContainer.innerHTML = `<video src="${item.media}" poster="${item.poster || ''}" controls playsinline autoplay style="max-height: 52vh;"></video>`;
+        detailMediaContainer.innerHTML = `<video src="${mediaSrc}" poster="${item.poster || ''}" controls playsinline autoplay style="max-height: 52vh;"></video>`;
       } else if (item.tipe === 'voice') {
         detailAudio.style.display = 'block';
-        detailAudio.src = item.media;
+        detailAudio.src = mediaSrc;
         detailAudio.play().catch(() => {});
       }
 
@@ -1091,46 +1443,267 @@
       if (e.target === addModal) closeAdd();
     };
 
+    // Segmented Type Switching
+    const groupPhoto = $('#group-photo');
+    const groupVideo = $('#group-video');
+    const groupVoice = $('#group-voice');
+    let currentType = 'text';
+
     $$('.type-segment-btn').forEach(btn => {
       btn.onclick = () => {
         $$('.type-segment-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        const val = btn.dataset.type;
-        $('#form-tipe').value = val;
+        currentType = btn.dataset.type;
+        $('#form-tipe').value = currentType;
 
-        const mediaGroup = $('#form-media-group');
-        const mediaLabel = $('#form-media-label');
-        const mediaInput = $('#form-media');
-
-        if (val === 'photo') {
-          mediaGroup.style.display = 'block';
-          mediaLabel.textContent = 'File Foto Galeri';
-          mediaInput.placeholder = 'Contoh: galeri/10.webp';
-        } else if (val === 'video') {
-          mediaGroup.style.display = 'block';
-          mediaLabel.textContent = 'File Video Galeri';
-          mediaInput.placeholder = 'Contoh: galeri/2.mp4';
-        } else {
-          mediaGroup.style.display = 'none';
-        }
+        groupPhoto.style.display = currentType === 'photo' ? 'block' : 'none';
+        groupVideo.style.display = currentType === 'video' ? 'block' : 'none';
+        groupVoice.style.display = currentType === 'voice' ? 'block' : 'none';
       };
     });
 
+    // --- PHOTO UPLOAD & PREVIEW ---
+    const filePhoto = $('#file-photo');
+    const promptPhoto = $('#prompt-photo');
+    const previewPhoto = $('#preview-photo');
+    const previewPhotoImg = $('#preview-photo-img');
+    const previewPhotoName = $('#preview-photo-name');
+    const btnRemovePhoto = $('#btn-remove-photo');
+
+    const handlePhotoSelect = (file) => {
+      if (!file || !file.type.startsWith('image/')) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        previewPhotoImg.src = e.target.result;
+        previewPhotoName.textContent = `${file.name} (${(file.size / (1024 * 1024)).toFixed(1)} MB)`;
+        promptPhoto.style.display = 'none';
+        previewPhoto.style.display = 'flex';
+      };
+      reader.readAsDataURL(file);
+    };
+
+    filePhoto.onchange = () => {
+      if (filePhoto.files && filePhoto.files[0]) {
+        handlePhotoSelect(filePhoto.files[0]);
+      }
+    };
+
+    btnRemovePhoto.onclick = (e) => {
+      e.stopPropagation();
+      filePhoto.value = '';
+      previewPhotoImg.src = '';
+      previewPhoto.style.display = 'none';
+      promptPhoto.style.display = 'flex';
+    };
+
+    // --- VIDEO UPLOAD & PREVIEW ---
+    const fileVideo = $('#file-video');
+    const promptVideo = $('#prompt-video');
+    const previewVideo = $('#preview-video');
+    const previewVideoPlayer = $('#preview-video-player');
+    const previewVideoName = $('#preview-video-name');
+    const btnRemoveVideo = $('#btn-remove-video');
+
+    const handleVideoSelect = (file) => {
+      if (!file || !file.type.startsWith('video/')) return;
+      previewVideoPlayer.src = URL.createObjectURL(file);
+      previewVideoName.textContent = `${file.name} (${(file.size / (1024 * 1024)).toFixed(1)} MB)`;
+      promptVideo.style.display = 'none';
+      previewVideo.style.display = 'flex';
+    };
+
+    fileVideo.onchange = () => {
+      if (fileVideo.files && fileVideo.files[0]) {
+        handleVideoSelect(fileVideo.files[0]);
+      }
+    };
+
+    btnRemoveVideo.onclick = (e) => {
+      e.stopPropagation();
+      fileVideo.value = '';
+      previewVideoPlayer.pause();
+      previewVideoPlayer.src = '';
+      previewVideo.style.display = 'none';
+      promptVideo.style.display = 'flex';
+    };
+
+    // --- VOICE RECORDER (MIC & WEB AUDIO) ---
+    let mediaRecorder = null;
+    let audioChunks = [];
+    let recordedAudioBlob = null;
+    let recordingTimerInterval = null;
+    let recordingSeconds = 0;
+
+    const btnStartRecord = $('#btn-start-record');
+    const btnStopRecord = $('#btn-stop-record');
+    const btnRerecord = $('#btn-rerecord');
+    const voiceStateIdle = $('#voice-state-idle');
+    const voiceStateRecording = $('#voice-state-recording');
+    const voiceStatePreview = $('#voice-state-preview');
+    const recordingTimer = $('#recording-timer');
+    const voicePreviewPlayer = $('#voice-preview-player');
+    const recordedDurationTag = $('#recorded-duration-tag');
+    const fileVoice = $('#file-voice');
+
+    btnStartRecord.onclick = async () => {
+      try {
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+          alert('Browser Anda belum mendukung perekaman mikrofon langsung. Silakan gunakan opsi unggah berkas audio.');
+          return;
+        }
+
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        audioChunks = [];
+        recordedAudioBlob = null;
+
+        let mimeType = 'audio/webm';
+        if (typeof MediaRecorder !== 'undefined') {
+          if (MediaRecorder.isTypeSupported('audio/webm;codecs=opus')) {
+            mimeType = 'audio/webm;codecs=opus';
+          } else if (MediaRecorder.isTypeSupported('audio/mp4')) {
+            mimeType = 'audio/mp4';
+          }
+        }
+
+        mediaRecorder = new MediaRecorder(stream, { mimeType });
+
+        mediaRecorder.ondataavailable = (e) => {
+          if (e.data && e.data.size > 0) audioChunks.push(e.data);
+        };
+
+        mediaRecorder.onstop = () => {
+          stream.getTracks().forEach(track => track.stop());
+          clearInterval(recordingTimerInterval);
+
+          recordedAudioBlob = new Blob(audioChunks, { type: mimeType });
+          voicePreviewPlayer.src = URL.createObjectURL(recordedAudioBlob);
+
+          const mins = Math.floor(recordingSeconds / 60);
+          const secs = recordingSeconds % 60;
+          const durStr = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+          recordedDurationTag.textContent = `Terekam (${durStr})`;
+
+          voiceStateRecording.style.display = 'none';
+          voiceStatePreview.style.display = 'flex';
+        };
+
+        mediaRecorder.start(200);
+
+        recordingSeconds = 0;
+        recordingTimer.textContent = '00:00';
+        voiceStateIdle.style.display = 'none';
+        voiceStatePreview.style.display = 'none';
+        voiceStateRecording.style.display = 'flex';
+
+        recordingTimerInterval = setInterval(() => {
+          recordingSeconds++;
+          const mins = Math.floor(recordingSeconds / 60);
+          const secs = recordingSeconds % 60;
+          recordingTimer.textContent = `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
+
+          if (recordingSeconds >= 180) {
+            btnStopRecord.click();
+          }
+        }, 1000);
+
+      } catch (err) {
+        alert('Izin mikrofon diperlukan. Mohon izinkan akses mikrofon di browser Anda untuk merekam ucapan suara.');
+      }
+    };
+
+    btnStopRecord.onclick = () => {
+      if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+        mediaRecorder.stop();
+      }
+    };
+
+    const resetVoiceState = () => {
+      if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+        try { mediaRecorder.stop(); } catch(e){}
+      }
+      clearInterval(recordingTimerInterval);
+      recordedAudioBlob = null;
+      audioChunks = [];
+      recordingSeconds = 0;
+      voicePreviewPlayer.pause();
+      voicePreviewPlayer.src = '';
+      voiceStateRecording.style.display = 'none';
+      voiceStatePreview.style.display = 'none';
+      voiceStateIdle.style.display = 'flex';
+      fileVoice.value = '';
+    };
+
+    btnRerecord.onclick = resetVoiceState;
+
+    fileVoice.onchange = () => {
+      if (fileVoice.files && fileVoice.files[0]) {
+        const f = fileVoice.files[0];
+        recordedAudioBlob = null;
+        voicePreviewPlayer.src = URL.createObjectURL(f);
+        recordedDurationTag.textContent = `${f.name} (${(f.size / (1024 * 1024)).toFixed(1)} MB)`;
+        voiceStateIdle.style.display = 'none';
+        voiceStateRecording.style.display = 'none';
+        voiceStatePreview.style.display = 'flex';
+      }
+    };
+
+    // FORM SUBMIT
     $('#add-wish-form').onsubmit = async (e) => {
       e.preventDefault();
-      const payload = {
-        nama: $('#form-nama').value,
-        hubungan: $('#form-hubungan').value,
-        tipe: $('#form-tipe').value,
-        media: $('#form-media').value,
-        pesan: $('#form-pesan').value
-      };
+
+      const nama = $('#form-nama').value.trim();
+      const pesan = $('#form-pesan').value.trim();
+      const hubungan = $('#form-hubungan').value.trim();
+
+      if (!nama || !pesan) {
+        alert('Nama dan isi pesan wajib diisi.');
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('nama', nama);
+      formData.append('hubungan', hubungan);
+      formData.append('tipe', currentType);
+      formData.append('pesan', pesan);
+
+      if (currentType === 'photo') {
+        const photo = filePhoto.files[0];
+        if (!photo) {
+          alert('Silakan pilih foto yang ingin diunggah.');
+          return;
+        }
+        formData.append('file', photo);
+      } else if (currentType === 'video') {
+        const video = fileVideo.files[0];
+        if (!video) {
+          alert('Silakan pilih video yang ingin diunggah.');
+          return;
+        }
+        formData.append('file', video);
+      } else if (currentType === 'voice') {
+        if (recordedAudioBlob) {
+          const ext = recordedAudioBlob.type.includes('mp4') ? 'mp4' : 'webm';
+          formData.append('file', recordedAudioBlob, `voice-${Date.now()}.${ext}`);
+          const mins = Math.floor(recordingSeconds / 60);
+          const secs = recordingSeconds % 60;
+          formData.append('durasi', `${mins}:${secs < 10 ? '0' : ''}${secs}`);
+        } else if (fileVoice.files[0]) {
+          formData.append('file', fileVoice.files[0]);
+          formData.append('durasi', 'Audio');
+        } else {
+          alert('Silakan rekam pesan suaramu terlebih dahulu atau unggah berkas audio.');
+          return;
+        }
+      }
+
+      const btnSubmit = $('#btn-submit-wish');
+      btnSubmit.disabled = true;
+      btnSubmit.textContent = 'Menyimpan & Mengunggah...';
 
       try {
         const res = await fetch('/api/ucapan', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
+          body: formData
         });
 
         if (res.ok) {
@@ -1138,13 +1711,27 @@
           rawWishes.unshift(created);
           reShuffle();
           closeAdd();
+
+          // Reset Form & Media
           $('#add-wish-form').reset();
+          currentType = 'text';
           $('#form-tipe').value = 'text';
           $$('.type-segment-btn').forEach((b, i) => b.classList.toggle('active', i === 0));
-          $('#form-media-group').style.display = 'none';
+          groupPhoto.style.display = 'none';
+          groupVideo.style.display = 'none';
+          groupVoice.style.display = 'none';
+          btnRemovePhoto.click();
+          btnRemoveVideo.click();
+          resetVoiceState();
+        } else {
+          const errData = await res.json().catch(() => ({}));
+          alert(errData.error || 'Gagal menyimpan ucapan. Silakan coba lagi.');
         }
       } catch (err) {
-        alert('Gagal menyimpan ucapan. Silakan coba lagi.');
+        alert('Terjadi kesalahan jaringan saat mengunggah. Silakan coba lagi.');
+      } finally {
+        btnSubmit.disabled = false;
+        btnSubmit.textContent = 'Simpan ke Kotak Kenangan';
       }
     };
 
