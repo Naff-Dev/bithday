@@ -1,8 +1,5 @@
 node_modules
 .vercel
-.env
 .DS_Store
 Thumbs.db
-public/uploads/*
-!public/uploads/.gitkeep
 
