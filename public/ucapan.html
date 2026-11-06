@@ -593,6 +593,8 @@
 
     /* Segmented selector for type */
     .type-segmented-control {
+      position: relative;
+      z-index: 30;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 6px;
@@ -609,6 +611,8 @@
     }
 
     .type-segment-btn {
+      position: relative;
+      z-index: 31;
       background: transparent;
       border: 1px solid transparent;
       color: var(--tx-muted);
@@ -636,6 +640,7 @@
 
     /* Upload Dropzone */
     .upload-dropzone {
+      display: block;
       position: relative;
       border: 1px dashed rgba(255, 255, 255, 0.2);
       border-radius: 10px;
@@ -653,13 +658,7 @@
     }
 
     .file-hidden-input {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      width: 100%;
-      height: 100%;
-      cursor: pointer;
-      z-index: 5;
+      display: none !important;
     }
 
     .dropzone-prompt {
@@ -1066,7 +1065,7 @@
         <!-- UPLOAD FOTO -->
         <div class="form-group" id="group-photo" style="display:none;">
           <label>Unggah Foto Kenangan</label>
-          <div class="upload-dropzone" id="dropzone-photo">
+          <label class="upload-dropzone" id="dropzone-photo" for="file-photo">
             <input type="file" id="file-photo" accept="image/*" class="file-hidden-input">
             <div class="dropzone-prompt" id="prompt-photo">
               <span class="upload-title">Pilih atau Seret Foto ke Sini</span>
@@ -1079,13 +1078,13 @@
                 <button type="button" class="btn-remove-media" id="btn-remove-photo">Ganti Foto</button>
               </div>
             </div>
-          </div>
+          </label>
         </div>
 
         <!-- UPLOAD VIDEO -->
         <div class="form-group" id="group-video" style="display:none;">
           <label>Unggah Video Ucapan</label>
-          <div class="upload-dropzone" id="dropzone-video">
+          <label class="upload-dropzone" id="dropzone-video" for="file-video">
             <input type="file" id="file-video" accept="video/*" class="file-hidden-input">
             <div class="dropzone-prompt" id="prompt-video">
               <span class="upload-title">Pilih atau Seret Video ke Sini</span>
@@ -1098,7 +1097,7 @@
                 <button type="button" class="btn-remove-media" id="btn-remove-video">Ganti Video</button>
               </div>
             </div>
-          </div>
+          </label>
         </div>
 
         <!-- REKAM SUARA / MIC -->
@@ -1489,6 +1488,7 @@
     };
 
     btnRemovePhoto.onclick = (e) => {
+      e.preventDefault();
       e.stopPropagation();
       filePhoto.value = '';
       previewPhotoImg.src = '';
@@ -1519,6 +1519,7 @@
     };
 
     btnRemoveVideo.onclick = (e) => {
+      e.preventDefault();
       e.stopPropagation();
       fileVideo.value = '';
       previewVideoPlayer.pause();
