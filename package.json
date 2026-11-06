@@ -1,0 +1,14 @@
+{
+  "name": "sayang",
+  "version": "1.0.0",
+  "description": "For You: The Most Beautiful Story",
+  "main": "api/index.js",
+  "scripts": {
+    "start": "node api/index.js",
+    "dev": "node api/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0"
+  }
+}

@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apa Kata Mereka? — Kotak Kenangan & Ucapan Ulang Tahun</title>
+  <meta name="description" content="A little collection of love, laughter, and memories dari orang-orang tersayang.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0c080a;
+      --bg-card: #150f13;
+      --bg-card-hover: #1c141a;
+      --red: #e50914;
+      --r2: #c4485c;
+      --go: #d4a373;
+      --tx-primary: #ffffff;
+      --tx-secondary: #ecd5cd;
+      --tx-muted: #8e787f;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(255, 255, 255, 0.22);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--tx-primary);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(197, 34, 51, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 85% 75%, rgba(212, 163, 115, 0.05) 0%, transparent 50%);
+      background-attachment: fixed;
+      min-height: 100vh;
+    }
+
+    /* === NAVBAR === */
+    header.top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(12, 8, 10, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 16px 6vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-logo {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .back-btn {
+      color: var(--tx-secondary);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.03);
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .back-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--border-hover);
+    }
+
+    /* === HERO INTRO === */
+    .intro-section {
+      padding: 70px 6vw 40px;
+      text-align: center;
+      max-width: 840px;
+      margin: 0 auto;
+    }
+
+    .sec-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--go);
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .intro-section h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(40px, 6.5vw, 68px);
+      line-height: 1.08;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 14px;
+      color: #ffffff;
+    }
+
+    .intro-section p {
+      font-size: clamp(15px, 1.8vw, 18px);
+      color: var(--tx-secondary);
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+
+    .action-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .btn-shuffle {
+      background: var(--red);
+      color: #ffffff;
+      border: none;
+      padding: 11px 24px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(229, 9, 20, 0.4);
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-shuffle:hover {
+      background: #f40612;
+      transform: translateY(-2px);
+    }
+
+    .btn-shuffle:active {
+      transform: translateY(0);
+    }
+
+    .btn-add {
+      background: rgba(255, 255, 255, 0.06);
+      color: #ffffff;
+      border: 1px solid var(--border-subtle);
+      padding: 11px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .btn-add:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--border-hover);
+    }
+
+    /* Filter pills */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin: 10px 0 40px;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--tx-muted);
+      font-size: 12.5px;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .filter-btn:hover {
+      color: #ffffff;
+    }
+
+    .filter-btn.active {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--border-subtle);
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* === MASONRY GRID === */
+    .gallery-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 6vw 100px;
+    }
+
+    .masonry-grid {
+      column-count: 3;
+      column-gap: 22px;
+    }
+
+    @media (max-width: 950px) {
+      .masonry-grid {
+        column-count: 2;
+        column-gap: 18px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .masonry-grid {
+        column-count: 1;
+      }
+    }
+
+    .wish-card {
+      break-inside: avoid;
+      margin-bottom: 22px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s, border-color 0.35s;
+      animation: cardFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    @keyframes cardFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .wish-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+      border-color: var(--border-hover);
+      background: var(--bg-card-hover);
+    }
+
+    /* Media inside cards */
+    .card-media {
+      position: relative;
+      width: 100%;
+      background: #000000;
+      overflow: hidden;
+    }
+
+    .card-media img,
+    .card-media video {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+
+    .wish-card:hover .card-media img,
+    .wish-card:hover .card-media video {
+      transform: scale(1.04);
+    }
+
+    .media-type-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 2;
+      background: rgba(12, 8, 10, 0.75);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #ecd5cd;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .card-body {
+      padding: 22px 22px 20px;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 12px;
+      gap: 12px;
+    }
+
+    .card-author {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 21px;
+      font-weight: 600;
+      color: #ffffff;
+      line-height: 1.15;
+    }
+
+    .card-relation {
+      font-family: 'Dancing Script', cursive;
+      font-size: 16px;
+      color: var(--go);
+    }
+
+    .card-snippet {
+      color: var(--tx-secondary);
+      font-size: 14px;
+      line-height: 1.65;
+      font-weight: 400;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card-date {
+      display: block;
+      margin-top: 14px;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--tx-muted);
+    }
+
+    /* Voice Note Card */
+    .card-voice {
+      background: linear-gradient(145deg, #180f14 0%, #120b0e 100%);
+      border-color: rgba(197, 34, 51, 0.25);
+    }
+
+    .voice-control-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      margin-bottom: 14px;
+    }
+
+    .voice-play-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--red);
+      color: #ffffff;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .voice-play-btn:hover {
+      background: #f40612;
+      transform: scale(1.08);
+    }
+
+    .waveform-visualizer {
+      flex: 1;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .wave-bar {
+      width: 3px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.28);
+      border-radius: 2px;
+      transition: height 0.2s, background 0.2s;
+    }
+
+    .card-voice.playing .wave-bar {
+      background: var(--go);
+      animation: wavePulse 0.8s ease-in-out infinite alternate;
+    }
+
+    @keyframes wavePulse {
+      0% { height: 4px; }
+      100% { height: 18px; }
+    }
+
+    .voice-duration {
+      font-size: 11px;
+      color: var(--tx-muted);
+      font-family: monospace;
+      flex-shrink: 0;
+    }
+
+    /* Text Note Card (Letter format) */
+    .card-text {
+      background: linear-gradient(180deg, #171014 0%, #110b0d 100%);
+      border-left: 3px solid var(--go);
+    }
+
+    .text-quote-accent {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 32px;
+      line-height: 0.5;
+      color: rgba(212, 163, 115, 0.45);
+      margin-bottom: 8px;
+    }
+
+    /* === MODALS === */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-dialog {
+      max-width: 640px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      background: #140d11;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 16px;
+      padding: 34px 30px;
+      position: relative;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9);
+      animation: modalZoomIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes modalZoomIn {
+      from {
+        opacity: 0;
+        transform: scale(0.96) translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+      z-index: 5;
+    }
+
+    .modal-close-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    #detail-media-container {
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 22px;
+      background: #000;
+    }
+
+    #detail-media-container img,
+    #detail-media-container video {
+      width: 100%;
+      max-height: 52vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    .detail-head {
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .detail-author {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: #ffffff;
+      line-height: 1.15;
+    }
+
+    .detail-relation {
+      font-family: 'Dancing Script', cursive;
+      font-size: 18px;
+      color: var(--go);
+      margin-top: 4px;
+    }
+
+    .detail-message {
+      font-size: 15.5px;
+      line-height: 1.75;
+      color: var(--tx-secondary);
+      white-space: pre-wrap;
+    }
+
+    .detail-audio-player {
+      width: 100%;
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    /* Modal Add Wish Form */
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--tx-secondary);
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 11px 14px;
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 14px;
+      transition: border-color 0.2s;
+      color-scheme: dark;
+    }
+
+    .form-group select option {
+      background-color: #181014;
+      color: #ffffff;
+      padding: 10px 14px;
+    }
+
+    /* Segmented selector for type */
+    .type-segmented-control {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 4px;
+    }
+
+    .type-segment-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--tx-muted);
+      padding: 9px 8px;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .type-segment-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .type-segment-btn.active {
+      background: rgba(229, 9, 20, 0.88);
+      border-color: rgba(229, 9, 20, 0.9);
+      color: #ffffff;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--go);
+    }
+
+    .btn-submit {
+      background: var(--red);
+      color: #ffffff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.2s;
+    }
+
+    .btn-submit:hover {
+      background: #f40612;
+    }
+
+    /* Floating music button */
+    #music-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 40;
+      background: rgba(18, 12, 15, 0.88);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-subtle);
+      color: var(--tx-secondary);
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    #music-btn:hover {
+      color: #ffffff;
+      border-color: var(--border-hover);
+    }
+
+    #music-btn .bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 14px;
+    }
+
+    #music-btn .bars span {
+      width: 2.5px;
+      background: var(--go);
+      border-radius: 1px;
+      height: 4px;
+      transition: height 0.2s;
+    }
+
+    #music-btn.playing .bars span:nth-child(1) { animation: barPlay 0.8s ease-in-out infinite alternate; }
+    #music-btn.playing .bars span:nth-child(2) { animation: barPlay 0.8s ease-in-out infinite alternate 0.25s; }
+    #music-btn.playing .bars span:nth-child(3) { animation: barPlay 0.8s ease-in-out infinite alternate 0.5s; }
+
+    @keyframes barPlay {
+      from { height: 4px; }
+      to { height: 14px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- TOP BAR -->
+  <header class="top-bar">
+    <a href="/" class="brand-logo">For You</a>
+    <div class="top-actions">
+      <a href="/" class="back-btn">← Kembali ke Cerita Kita</a>
+    </div>
+  </header>
+
+  <!-- INTRO HEADER -->
+  <main>
+    <section class="intro-section">
+      <span class="sec-tag">A GIFT FOR YOU</span>
+      <h1>Apa Kata Mereka?</h1>
+      <p>A little collection of love, laughter, and memories dari orang-orang tersayang yang selalu mendoakan dan mengagumi kehadiranmu.</p>
+
+      <div class="action-controls">
+        <button class="btn-shuffle" id="btn-shuffle" aria-label="Acak susunan ucapan">
+          Acak Ulang Kenangan
+        </button>
+        <button class="btn-add" id="btn-open-add-modal" aria-label="Tulis ucapan baru">
+          + Tulis Ucapan
+        </button>
+      </div>
+
+      <!-- Filter Categories -->
+      <div class="filter-bar" id="filter-bar">
+        <button class="filter-btn active" data-type="all">Semua</button>
+        <button class="filter-btn" data-type="photo">Foto</button>
+        <button class="filter-btn" data-type="video">Video</button>
+        <button class="filter-btn" data-type="voice">Suara</button>
+        <button class="filter-btn" data-type="text">Catatan</button>
+      </div>
+    </section>
+
+    <!-- MASONRY GALLERY -->
+    <section class="gallery-container">
+      <div class="masonry-grid" id="masonry-grid">
+        <!-- Populated dynamically via Fisher-Yates shuffle -->
+      </div>
+    </section>
+  </main>
+
+  <!-- FLOATING MUSIC BUTTON -->
+  <button id="music-btn" aria-label="Putar musik latar">
+    <div class="bars" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+    <span id="music-btn-text">Putar Musik</span>
+  </button>
+  <audio id="bgm" loop preload="auto" src="bgm.mp3"></audio>
+
+  <!-- MODAL: DETAIL UCAPAN (SURPRISE DETAIL) -->
+  <div class="modal-overlay" id="detail-modal" role="dialog" aria-modal="true" aria-label="Detail Ucapan">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" id="btn-close-detail" aria-label="Tutup detail">✕</button>
+      <div id="detail-media-container" style="display: none;"></div>
+      <div class="detail-head">
+        <div class="detail-author" id="detail-author"></div>
+        <div class="detail-relation" id="detail-relation"></div>
+      </div>
+      <div class="detail-message" id="detail-message"></div>
+      <audio id="detail-audio" controls class="detail-audio-player" style="display: none;"></audio>
+    </div>
+  </div>
+
+  <!-- MODAL: ADD NEW WISH -->
+  <div class="modal-overlay" id="add-modal" role="dialog" aria-modal="true" aria-label="Tulis Ucapan Baru">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" id="btn-close-add" aria-label="Tutup form">✕</button>
+      <div class="detail-head">
+        <div class="detail-author">Tulis Ucapan Ulang Tahun</div>
+        <div class="detail-relation">Tinggalkan pesan hangat untuknya</div>
+      </div>
+      <form id="add-wish-form">
+        <div class="form-group">
+          <label for="form-nama">Nama Anda</label>
+          <input type="text" id="form-nama" required placeholder="Contoh: Sarah / Kak Dimas">
+        </div>
+        <div class="form-group">
+          <label for="form-hubungan">Hubungan</label>
+          <input type="text" id="form-hubungan" placeholder="Contoh: Sahabat Kampus / Saudara">
+        </div>
+        <div class="form-group">
+          <label>Tipe Ucapan</label>
+          <div class="type-segmented-control" id="type-segmented-control">
+            <button type="button" class="type-segment-btn active" data-type="text">Pesan Tertulis</button>
+            <button type="button" class="type-segment-btn" data-type="photo">Foto Kenangan</button>
+            <button type="button" class="type-segment-btn" data-type="video">Video Ucapan</button>
+          </div>
+          <input type="hidden" id="form-tipe" value="text">
+        </div>
+        <div class="form-group" id="form-media-group" style="display:none;">
+          <label for="form-media" id="form-media-label">File Media Galeri</label>
+          <input type="text" id="form-media" placeholder="Contoh: galeri/10.webp atau galeri/2.mp4">
+        </div>
+        <div class="form-group">
+          <label for="form-pesan">Isi Ucapan & Doa</label>
+          <textarea id="form-pesan" rows="4" required placeholder="Tuliskan ucapan dan doa tulusmu di sini..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Simpan ke Kotak Kenangan</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    const $ = selector => document.querySelector(selector);
+    const $$ = selector => [...document.querySelectorAll(selector)];
+
+    // True Fisher-Yates Shuffle Algorithm (Unbiased, uniform, no duplicates)
+    const shuffleArray = (array) => {
+      const arr = [...array];
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    };
+
+    let rawWishes = [];
+    let currentShuffled = [];
+    let currentFilter = 'all';
+
+    // Load data from persistent API / file
+    const fetchWishes = async () => {
+      try {
+        const res = await fetch('/api/ucapan');
+        if (res.ok) {
+          rawWishes = await res.json();
+        } else {
+          const fallback = await fetch('data/ucapan.json');
+          rawWishes = await fallback.json();
+        }
+      } catch (err) {
+        console.warn('Fallback loading', err);
+        const fallback = await fetch('data/ucapan.json');
+        rawWishes = await fallback.json();
+      }
+
+      // Initial Fisher-Yates shuffle on every page load/refresh
+      reShuffle();
+    };
+
+    const reShuffle = () => {
+      currentShuffled = shuffleArray(rawWishes);
+      renderGrid();
+    };
+
+    // Render Masonry Cards
+    const renderGrid = () => {
+      const filtered = currentFilter === 'all'
+        ? currentShuffled
+        : currentShuffled.filter(item => item.tipe === currentFilter);
+
+      const grid = $('#masonry-grid');
+
+      if (!filtered || filtered.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 70px 20px; color: var(--tx-muted); max-width: 500px; margin: 0 auto;">
+            <p style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 26px; color: var(--tx-primary); margin-bottom: 10px;">Belum Ada Ucapan</p>
+            <p style="font-size: 14px; color: var(--tx-secondary); line-height: 1.6; margin-bottom: 24px;">Jadilah yang pertama menuliskan doa, pesan manis, atau berbagi foto kenangan untuknya!</p>
+            <button type="button" onclick="openAdd()" class="action-btn" style="display: inline-flex; margin: 0 auto;">Tulis Pesan Pertama</button>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map((item, index) => {
+        const styleDelay = `style="animation-delay: ${index * 0.05}s;"`;
+
+        if (item.tipe === 'photo') {
+          return `
+            <div class="wish-card card-photo" ${styleDelay} onclick="openDetail('${item.id}')">
+              <div class="card-media">
+                <img src="${item.media}" alt="Kenangan ${item.nama}" loading="lazy">
+                <span class="media-type-badge">Foto</span>
+              </div>
+              <div class="card-body">
+                <div class="card-meta">
+                  <div class="card-author">${item.nama}</div>
+                  <div class="card-relation">${item.hubungan || ''}</div>
+                </div>
+                <p class="card-snippet">${item.pesan}</p>
+                <span class="card-date">${item.waktu || ''}</span>
+              </div>
+            </div>
+          `;
+        }
+
+        if (item.tipe === 'video') {
+          return `
+            <div class="wish-card card-video" ${styleDelay} onclick="openDetail('${item.id}')">
+              <div class="card-media">
+                <video src="${item.media}" poster="${item.poster || ''}" muted loop playsinline preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause()"></video>
+                <span class="media-type-badge">Video</span>
+              </div>
+              <div class="card-body">
+                <div class="card-meta">
+                  <div class="card-author">${item.nama}</div>
+                  <div class="card-relation">${item.hubungan || ''}</div>
+                </div>
+                <p class="card-snippet">${item.pesan}</p>
+                <span class="card-date">${item.waktu || ''}</span>
+              </div>
+            </div>
+          `;
+        }
+
+        if (item.tipe === 'voice') {
+          return `
+            <div class="wish-card card-voice" id="card-${item.id}" ${styleDelay} onclick="openDetail('${item.id}')">
+              <div class="card-body">
+                <div class="card-meta">
+                  <div class="card-author">${item.nama}</div>
+                  <div class="card-relation">${item.hubungan || ''}</div>
+                </div>
+                <div class="voice-control-box" onclick="event.stopPropagation(); toggleInlineVoice('${item.id}', '${item.media}')">
+                  <button class="voice-play-btn" id="voice-btn-${item.id}" aria-label="Putar rekaman suara">▶</button>
+                  <div class="waveform-visualizer">
+                    <span class="wave-bar" style="height: 6px;"></span>
+                    <span class="wave-bar" style="height: 12px;"></span>
+                    <span class="wave-bar" style="height: 8px;"></span>
+                    <span class="wave-bar" style="height: 16px;"></span>
+                    <span class="wave-bar" style="height: 10px;"></span>
+                    <span class="wave-bar" style="height: 14px;"></span>
+                    <span class="wave-bar" style="height: 7px;"></span>
+                  </div>
+                  <span class="voice-duration">${item.durasi || 'Voice'}</span>
+                </div>
+                <p class="card-snippet">${item.pesan}</p>
+                <span class="card-date">${item.waktu || ''}</span>
+              </div>
+            </div>
+          `;
+        }
+
+        // Text note
+        return `
+          <div class="wish-card card-text" ${styleDelay} onclick="openDetail('${item.id}')">
+            <div class="card-body">
+              <div class="text-quote-accent">“</div>
+              <div class="card-meta">
+                <div class="card-author">${item.nama}</div>
+                <div class="card-relation">${item.hubungan || ''}</div>
+              </div>
+              <p class="card-snippet">${item.pesan}</p>
+              <span class="card-date">${item.waktu || ''}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    };
+
+    // Filter switching
+    $$('.filter-btn').forEach(btn => {
+      btn.onclick = () => {
+        $$('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.type;
+        renderGrid();
+      };
+    });
+
+    // Shuffle Button action
+    $('#btn-shuffle').onclick = () => {
+      reShuffle();
+    };
+
+    // Inline voice playback
+    let currentInlineAudio = null;
+    let currentInlineCardId = null;
+
+    window.toggleInlineVoice = (id, src) => {
+      const card = $(`#card-${id}`);
+      const btn = $(`#voice-btn-${id}`);
+
+      if (currentInlineAudio && currentInlineCardId === id) {
+        if (currentInlineAudio.paused) {
+          currentInlineAudio.play();
+          card.classList.add('playing');
+          btn.textContent = '❚❚';
+        } else {
+          currentInlineAudio.pause();
+          card.classList.remove('playing');
+          btn.textContent = '▶';
+        }
+        return;
+      }
+
+      if (currentInlineAudio) {
+        currentInlineAudio.pause();
+        const prevCard = $(`#card-${currentInlineCardId}`);
+        const prevBtn = $(`#voice-btn-${currentInlineCardId}`);
+        if (prevCard) prevCard.classList.remove('playing');
+        if (prevBtn) prevBtn.textContent = '▶';
+      }
+
+      currentInlineAudio = new Audio(src);
+      currentInlineCardId = id;
+      card.classList.add('playing');
+      btn.textContent = '❚❚';
+
+      currentInlineAudio.play().catch(() => {});
+      currentInlineAudio.onended = () => {
+        card.classList.remove('playing');
+        btn.textContent = '▶';
+      };
+    };
+
+    // Detail Modal Functionality
+    const detailModal = $('#detail-modal');
+    const detailMediaContainer = $('#detail-media-container');
+    const detailAuthor = $('#detail-author');
+    const detailRelation = $('#detail-relation');
+    const detailMessage = $('#detail-message');
+    const detailAudio = $('#detail-audio');
+
+    window.openDetail = (id) => {
+      const item = rawWishes.find(w => w.id === id);
+      if (!item) return;
+
+      if (currentInlineAudio) {
+        currentInlineAudio.pause();
+        const prevCard = $(`#card-${currentInlineCardId}`);
+        const prevBtn = $(`#voice-btn-${currentInlineCardId}`);
+        if (prevCard) prevCard.classList.remove('playing');
+        if (prevBtn) prevBtn.textContent = '▶';
+      }
+
+      detailAuthor.textContent = item.nama;
+      detailRelation.textContent = item.hubungan ? `${item.hubungan} · ${item.waktu || ''}` : (item.waktu || '');
+      detailMessage.textContent = item.pesan;
+
+      detailMediaContainer.innerHTML = '';
+      detailMediaContainer.style.display = 'none';
+      detailAudio.pause();
+      detailAudio.style.display = 'none';
+
+      if (item.tipe === 'photo') {
+        detailMediaContainer.style.display = 'block';
+        detailMediaContainer.innerHTML = `<img src="${item.media}" alt="${item.nama}">`;
+      } else if (item.tipe === 'video') {
+        detailMediaContainer.style.display = 'block';
+        detailMediaContainer.innerHTML = `<video src="${item.media}" poster="${item.poster || ''}" controls playsinline autoplay style="max-height: 52vh;"></video>`;
+      } else if (item.tipe === 'voice') {
+        detailAudio.style.display = 'block';
+        detailAudio.src = item.media;
+        detailAudio.play().catch(() => {});
+      }
+
+      detailModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeDetail = () => {
+      detailModal.classList.remove('open');
+      document.body.style.overflow = '';
+      const vid = detailMediaContainer.querySelector('video');
+      if (vid) vid.pause();
+      detailAudio.pause();
+      detailAudio.src = '';
+    };
+
+    $('#btn-close-detail').onclick = closeDetail;
+    detailModal.onclick = (e) => {
+      if (e.target === detailModal) closeDetail();
+    };
+
+    // Add Wish Modal
+    const addModal = $('#add-modal');
+    $('#btn-open-add-modal').onclick = () => {
+      addModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeAdd = () => {
+      addModal.classList.remove('open');
+      document.body.style.overflow = '';
+    };
+
+    $('#btn-close-add').onclick = closeAdd;
+    addModal.onclick = (e) => {
+      if (e.target === addModal) closeAdd();
+    };
+
+    $$('.type-segment-btn').forEach(btn => {
+      btn.onclick = () => {
+        $$('.type-segment-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const val = btn.dataset.type;
+        $('#form-tipe').value = val;
+
+        const mediaGroup = $('#form-media-group');
+        const mediaLabel = $('#form-media-label');
+        const mediaInput = $('#form-media');
+
+        if (val === 'photo') {
+          mediaGroup.style.display = 'block';
+          mediaLabel.textContent = 'File Foto Galeri';
+          mediaInput.placeholder = 'Contoh: galeri/10.webp';
+        } else if (val === 'video') {
+          mediaGroup.style.display = 'block';
+          mediaLabel.textContent = 'File Video Galeri';
+          mediaInput.placeholder = 'Contoh: galeri/2.mp4';
+        } else {
+          mediaGroup.style.display = 'none';
+        }
+      };
+    });
+
+    $('#add-wish-form').onsubmit = async (e) => {
+      e.preventDefault();
+      const payload = {
+        nama: $('#form-nama').value,
+        hubungan: $('#form-hubungan').value,
+        tipe: $('#form-tipe').value,
+        media: $('#form-media').value,
+        pesan: $('#form-pesan').value
+      };
+
+      try {
+        const res = await fetch('/api/ucapan', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          const created = await res.json();
+          rawWishes.unshift(created);
+          reShuffle();
+          closeAdd();
+          $('#add-wish-form').reset();
+          $('#form-tipe').value = 'text';
+          $$('.type-segment-btn').forEach((b, i) => b.classList.toggle('active', i === 0));
+          $('#form-media-group').style.display = 'none';
+        }
+      } catch (err) {
+        alert('Gagal menyimpan ucapan. Silakan coba lagi.');
+      }
+    };
+
+    // Background Music
+    const audio = $('#bgm');
+    const musicBtn = $('#music-btn');
+    const musicText = $('#music-btn-text');
+
+    const updateMusicUI = () => {
+      if (audio.paused) {
+        musicBtn.classList.remove('playing');
+        musicText.textContent = 'Putar Musik';
+      } else {
+        musicBtn.classList.add('playing');
+        musicText.textContent = 'Musik Menyala';
+      }
+    };
+
+    audio.volume = 0.6;
+    audio.onplay = updateMusicUI;
+    audio.onpause = updateMusicUI;
+
+    musicBtn.onclick = () => {
+      audio.paused ? audio.play().catch(() => {}) : audio.pause();
+    };
+
+    document.addEventListener('pointerdown', () => {
+      if (audio.paused) {
+        audio.play().catch(() => {});
+      }
+    }, { once: true });
+
+    // Keyboard ESC to close modals
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (detailModal.classList.contains('open')) closeDetail();
+        if (addModal.classList.contains('open')) closeAdd();
+      }
+    });
+
+    // Start fetching
+    fetchWishes();
+  </script>
+</body>
+</html>
+
