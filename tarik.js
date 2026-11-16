@@ -83,8 +83,32 @@ async function createBackupZip(outputZipPath) {
   }
 }
 
-function sendToTelegram(zipPath, caption) {
+async function sendViaFetch(zipPath, caption) {
+  const fileBuffer = fs.readFileSync(zipPath);
+  const fileBlob = new Blob([fileBuffer], { type: 'application/zip' });
+  const formData = new FormData();
+  formData.append('chat_id', CHAT_ID);
+  formData.append('caption', caption);
+  formData.append('parse_mode', 'Markdown');
+  formData.append('document', fileBlob, path.basename(zipPath));
+
+  const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendDocument`, {
+    method: 'POST',
+    body: formData
+  });
+
+  const json = await res.json();
+  if (!res.ok || !json.ok) {
+    throw new Error(json.description || 'Gagal mengirim berkas via fetch');
+  }
+  return json;
+}
+
+function sendViaCurl(zipPath, caption) {
   return new Promise((resolve, reject) => {
+    // Cross-platform: gunakan 'curl.exe' di Windows, 'curl' di Linux/VPS
+    const curlBin = process.platform === 'win32' ? 'curl.exe' : 'curl';
+
     const args = [
       '-s',
       '-S',
@@ -95,7 +119,7 @@ function sendToTelegram(zipPath, caption) {
       `https://api.telegram.org/bot${BOT_TOKEN}/sendDocument`
     ];
 
-    const child = spawn('curl.exe', args);
+    const child = spawn(curlBin, args);
     let stdout = '';
     let stderr = '';
 
@@ -119,6 +143,17 @@ function sendToTelegram(zipPath, caption) {
 
     child.on('error', err => reject(err));
   });
+}
+
+async function sendToTelegram(zipPath, caption) {
+  // Coba metode 1: Native Node.js fetch (cross-platform untuk Linux VPS & Windows)
+  try {
+    return await sendViaFetch(zipPath, caption);
+  } catch (fetchErr) {
+    console.warn(`Catatan: fetch gagal (${fetchErr.message}), mencoba metode curl...`);
+    // Fallback metode 2: curl cross-platform
+    return await sendViaCurl(zipPath, caption);
+  }
 }
 
 async function main() {
