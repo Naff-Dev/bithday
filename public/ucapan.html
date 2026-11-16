@@ -984,15 +984,6 @@
       <h1>Apa Kata Mereka?</h1>
       <p>A little collection of love, laughter, and memories dari orang-orang tersayang yang selalu mendoakan dan mengagumi kehadiranmu.</p>
 
-      <div class="action-controls">
-        <button class="btn-shuffle" id="btn-shuffle" aria-label="Acak susunan ucapan">
-          Acak Ulang Kenangan
-        </button>
-        <button class="btn-add" id="btn-open-add-modal" aria-label="Tulis ucapan baru">
-          + Tulis Ucapan
-        </button>
-      </div>
-
       <!-- Filter Categories -->
       <div class="filter-bar" id="filter-bar">
         <button class="filter-btn active" data-type="all">Semua</button>
@@ -1214,8 +1205,7 @@
         grid.innerHTML = `
           <div style="grid-column: 1 / -1; text-align: center; padding: 70px 20px; color: var(--tx-muted); max-width: 500px; margin: 0 auto;">
             <p style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 26px; color: var(--tx-primary); margin-bottom: 10px;">Belum Ada Ucapan</p>
-            <p style="font-size: 14px; color: var(--tx-secondary); line-height: 1.6; margin-bottom: 24px;">Jadilah yang pertama menuliskan doa, pesan manis, atau berbagi foto kenangan untuknya!</p>
-            <button type="button" onclick="openAdd()" class="action-btn" style="display: inline-flex; margin: 0 auto;">Tulis Pesan Pertama</button>
+            <p style="font-size: 14px; color: var(--tx-secondary); line-height: 1.6;">Belum ada ucapan untuk kategori ini.</p>
           </div>
         `;
         return;
@@ -1318,10 +1308,13 @@
       };
     });
 
-    // Shuffle Button action
-    $('#btn-shuffle').onclick = () => {
-      reShuffle();
-    };
+    // Shuffle Button action (if exists)
+    const btnShuffle = $('#btn-shuffle');
+    if (btnShuffle) {
+      btnShuffle.onclick = () => {
+        reShuffle();
+      };
+    }
 
     // Inline voice playback
     let currentInlineAudio = null;
@@ -1427,10 +1420,13 @@
 
     // Add Wish Modal
     const addModal = $('#add-modal');
-    $('#btn-open-add-modal').onclick = () => {
-      addModal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    };
+    const btnOpenAdd = $('#btn-open-add-modal');
+    if (btnOpenAdd) {
+      btnOpenAdd.onclick = () => {
+        addModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      };
+    }
 
     const closeAdd = () => {
       addModal.classList.remove('open');
@@ -1737,17 +1733,27 @@
     };
 
     // Background Music
+    const PLAYLIST = [
+      { id: 'penjaga-hati', title: 'Penjaga Hati', src: 'penjaga hati.mp3' },
+      { id: 'bergema-selamanya', title: 'Bergema Sampai Selamanya', src: 'Nadhif Basalamah - bergema sampai selamanya (Official Lyric Video).mp3' },
+      { id: 'masa-ini', title: 'Masa Ini, Nanti, dan Masa Indah Lainnya', src: 'Masa ini, Nanti, dan Masa Indah Lainnya.mp3' }
+    ];
+
     const audio = $('#bgm');
     const musicBtn = $('#music-btn');
     const musicText = $('#music-btn-text');
 
+    const selectedTrackId = localStorage.getItem('user_bgm_choice') || 'penjaga-hati';
+    const currentTrack = PLAYLIST.find(t => t.id === selectedTrackId) || PLAYLIST[0];
+    audio.src = encodeURI(currentTrack.src);
+
     const updateMusicUI = () => {
       if (audio.paused) {
         musicBtn.classList.remove('playing');
-        musicText.textContent = 'Putar Musik';
+        musicText.textContent = currentTrack.title;
       } else {
         musicBtn.classList.add('playing');
-        musicText.textContent = 'Musik Menyala';
+        musicText.textContent = currentTrack.title;
       }
     };
 

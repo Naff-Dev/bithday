@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>For You: The Most Beautiful Story</title>
-  
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Dancing+Script:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Dancing+Script:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
   <style>
     /* === CSS RESET & DESIGN TOKENS === */
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -55,7 +60,12 @@
     }
 
     /* Typography */
-    .sf, h1, h2, h3, .q, .quote-font {
+    .sf,
+    h1,
+    h2,
+    h3,
+    .q,
+    .quote-font {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-weight: 500;
     }
@@ -81,7 +91,9 @@
     }
 
     /* Focus accessibility (R-32) */
-    a:focus-visible, button:focus-visible, [tabindex="0"]:focus-visible {
+    a:focus-visible,
+    button:focus-visible,
+    [tabindex="0"]:focus-visible {
       outline: 2px solid var(--go);
       outline-offset: 3px;
     }
@@ -214,7 +226,7 @@
       inset: 0;
       z-index: 2;
       background: linear-gradient(90deg, #0c080ae6 0%, #0c080ad4 38%, #0c080a80 65%, rgba(12, 8, 10, 0.35) 100%),
-                  linear-gradient(180deg, rgba(12, 8, 10, 0.5) 0%, transparent 45%, #0c080a 100%);
+        linear-gradient(180deg, rgba(12, 8, 10, 0.5) 0%, transparent 45%, #0c080a 100%);
     }
 
     .hero-content {
@@ -240,7 +252,7 @@
       letter-spacing: -0.01em;
       margin-bottom: 16px;
       color: #ffffff;
-      text-shadow: 0 4px 18px rgba(0,0,0,0.6);
+      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
     }
 
     .hero p {
@@ -249,7 +261,7 @@
       max-width: 480px;
       margin-bottom: 30px;
       line-height: 1.6;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
     }
 
     .hero-actions {
@@ -393,7 +405,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0) 35%, rgba(12,8,10,0.85) 75%, rgba(12,8,10,0.98) 100%);
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 35%, rgba(12, 8, 10, 0.85) 75%, rgba(12, 8, 10, 0.98) 100%);
       z-index: 1;
     }
 
@@ -558,7 +570,7 @@
       align-items: center;
       justify-content: center;
       font-size: 16px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
     }
 
     /* Horizontal Stats Box (matching reference) */
@@ -984,8 +996,8 @@
     .finale {
       text-align: center;
       padding: 100px 6vw;
-      background: radial-gradient(circle at 50% 100%, rgba(224, 102, 63, 0.25) 0, rgba(0,0,0,0) 65%),
-                  linear-gradient(180deg, var(--bg) 0%, #1a0a10 50%, var(--bg) 100%);
+      background: radial-gradient(circle at 50% 100%, rgba(224, 102, 63, 0.25) 0, rgba(0, 0, 0, 0) 65%),
+        linear-gradient(180deg, var(--bg) 0%, #1a0a10 50%, var(--bg) 100%);
       border-top: 1px solid var(--border-subtle);
     }
 
@@ -1021,7 +1033,7 @@
       background: #faf6f0;
       padding: 6px 6px 18px;
       border-radius: 2px;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.6);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6);
       transform: rotate(var(--rot, 0deg));
       cursor: pointer;
       transition: transform 0.3s;
@@ -1039,12 +1051,18 @@
       display: block;
     }
 
-    /* Floating music player button */
-    #music-btn {
+    /* Floating music player container */
+    #music-player-wrap {
       position: fixed;
       right: 20px;
       bottom: calc(20px + env(safe-area-inset-bottom, 0px));
       z-index: 80;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    #music-btn {
       display: flex;
       align-items: center;
       gap: 10px;
@@ -1053,15 +1071,26 @@
       padding: 10px 18px;
       background: rgba(22, 13, 16, 0.88);
       backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       color: var(--tx-primary);
       font-size: 13px;
       font-weight: 500;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-      transition: transform 0.2s;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      transition: transform 0.2s, border-color 0.2s, background 0.2s;
+      cursor: pointer;
     }
 
     #music-btn:hover {
       transform: scale(1.03);
+      border-color: rgba(232, 201, 160, 0.45);
+    }
+
+    #music-text {
+      max-width: 140px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: inline-block;
     }
 
     #music-btn .bars {
@@ -1069,6 +1098,7 @@
       gap: 2.5px;
       align-items: flex-end;
       height: 14px;
+      flex-shrink: 0;
     }
 
     #music-btn .bars span {
@@ -1091,8 +1121,295 @@
       animation-delay: 0.5s;
     }
 
+    #music-change-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 99px;
+      padding: 10px 14px;
+      background: rgba(22, 13, 16, 0.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: var(--go);
+      font-size: 12.5px;
+      font-weight: 500;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      transition: transform 0.2s, border-color 0.2s, background 0.2s;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    #music-change-btn:hover {
+      transform: scale(1.03);
+      border-color: var(--go);
+      background: rgba(35, 18, 24, 0.95);
+    }
+
     @keyframes eq {
-      to { height: 14px; }
+      to {
+        height: 14px;
+      }
+    }
+
+    /* === MUSIC SELECTION MODAL === */
+    #music-picker-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(8, 5, 7, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+
+    #music-picker-modal.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .music-picker-card {
+      position: relative;
+      max-width: 480px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      background: linear-gradient(170deg, #180f14 0%, #100a0d 100%);
+      border: 1px solid rgba(232, 201, 160, 0.25);
+      border-radius: 22px;
+      padding: 34px 26px;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(155, 44, 63, 0.2);
+      animation: modalPopIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    @keyframes modalPopIn {
+      from {
+        opacity: 0;
+        transform: scale(0.93) translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .music-modal-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--go);
+      background: rgba(232, 201, 160, 0.1);
+      border: 1px solid rgba(232, 201, 160, 0.2);
+      padding: 5px 12px;
+      border-radius: 99px;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .music-modal-heading {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(25px, 5.5vw, 32px);
+      font-weight: 600;
+      line-height: 1.25;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .music-modal-sub {
+      font-size: 14px;
+      color: var(--tx-secondary);
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    .music-track-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 26px;
+      text-align: left;
+    }
+
+    .music-track-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 16px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .music-track-item input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .music-track-item:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(232, 201, 160, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .music-track-item.active {
+      background: linear-gradient(135deg, rgba(155, 44, 63, 0.35) 0%, rgba(26, 14, 19, 0.9) 100%);
+      border-color: rgba(232, 201, 160, 0.7);
+      box-shadow: 0 6px 20px rgba(155, 44, 63, 0.28), inset 0 0 12px rgba(232, 201, 160, 0.08);
+    }
+
+    .track-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+      transition: transform 0.3s;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .music-track-item.active .track-icon {
+      background: linear-gradient(135deg, var(--ro), var(--r2));
+      color: #ffffff;
+      border-color: var(--go);
+      box-shadow: 0 4px 12px rgba(155, 44, 63, 0.4);
+    }
+
+    .track-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .track-title-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 2px;
+      flex-wrap: wrap;
+    }
+
+    .track-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #ffffff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .track-pill {
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 99px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .default-pill {
+      background: rgba(232, 201, 160, 0.15);
+      color: var(--go);
+      border: 1px solid rgba(232, 201, 160, 0.3);
+    }
+
+    .track-artist {
+      font-size: 12.5px;
+      color: var(--tx-secondary);
+      display: block;
+    }
+
+    .track-check-indicator {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: transparent;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .music-track-item.active .track-check-indicator {
+      border-color: var(--go);
+      background: var(--go);
+      color: #12090d;
+      font-weight: bold;
+    }
+
+    .btn-play-selected {
+      width: 100%;
+      padding: 14px 24px;
+      background: linear-gradient(135deg, var(--ro) 0%, #ba3149 100%);
+      color: #ffffff;
+      border: 1px solid rgba(232, 201, 160, 0.35);
+      border-radius: 99px;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 10px 24px rgba(155, 44, 63, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+
+    .btn-play-selected:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(155, 44, 63, 0.55);
+      background: linear-gradient(135deg, var(--ro-hover) 0%, #c83751 100%);
+    }
+
+    .btn-play-selected:active {
+      transform: translateY(0);
+    }
+
+    .music-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--tx-secondary);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .music-modal-close:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+    }
+
+    .music-modal-close.visible {
+      display: flex;
     }
 
     /* === MODALS (CINEMA STORY, LETTER, LIGHTBOX) === */
@@ -1161,7 +1478,7 @@
       line-height: 1.35;
       font-style: italic;
       color: #ffffff;
-      text-shadow: 0 4px 16px rgba(0,0,0,0.8);
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
       animation: fadeInUp 1.2s both;
     }
 
@@ -1241,8 +1558,13 @@
       background: rgba(255, 255, 255, 0.3);
     }
 
-    #lightbox-prev { left: -60px; }
-    #lightbox-next { right: -60px; }
+    #lightbox-prev {
+      left: -60px;
+    }
+
+    #lightbox-next {
+      right: -60px;
+    }
 
     /* Floating hearts animation */
     .heart-particle {
@@ -1266,6 +1588,7 @@
         opacity: 0;
         transform: translateY(18px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -1278,7 +1601,9 @@
         display: none;
       }
 
-      .quote-mosaic-section, .story-grid, .girl-grid {
+      .quote-mosaic-section,
+      .story-grid,
+      .girl-grid {
         grid-template-columns: 1fr;
         gap: 36px;
       }
@@ -1293,8 +1618,13 @@
         margin-bottom: 20px;
       }
 
-      #lightbox-prev { left: 10px; }
-      #lightbox-next { right: 10px; }
+      #lightbox-prev {
+        left: 10px;
+      }
+
+      #lightbox-next {
+        right: 10px;
+      }
 
       #letter-paper {
         padding: 30px 20px;
@@ -1303,7 +1633,10 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+
+      *,
+      *::before,
+      *::after {
         animation: none !important;
         transition: none !important;
         scroll-behavior: auto !important;
@@ -1446,7 +1779,8 @@
       <span class="lock-tag">Kado Rahasia</span>
       <h2 class="lock-title">Akan Dibuka Tanggal 17 November 2026</h2>
       <p class="lock-desc">
-        Halaman cerita utama ini sedang dipersiapkan khusus untuk hari ulang tahunnya. Saat ini kamu bisa menitipkan ucapan atau kenangan manis di kotak ucapan untuknya.
+        Halaman cerita utama ini sedang dipersiapkan khusus untuk hari ulang tahunnya. Saat ini kamu bisa menitipkan
+        ucapan atau kenangan manis di kotak ucapan untuknya.
       </p>
       <div class="lock-actions">
         <a href="/ucapan" class="lock-btn-primary">Buka Galeri Ucapan</a>
@@ -1462,7 +1796,8 @@
         Halaman ini dilindungi sandi kenangan. Masukkan tanggal jadian kita untuk membuka seluruh cerita.
       </p>
       <form id="lock-password-form" class="lock-actions">
-        <input type="password" id="lock-password-input" class="lock-input" placeholder="Masukkan sandi..." autocomplete="current-password" required>
+        <input type="password" id="lock-password-input" class="lock-input" placeholder="Masukkan sandi..."
+          autocomplete="current-password" required>
         <button type="submit" class="lock-btn-primary" id="btn-submit-pass">Buka Halaman</button>
         <div id="lock-error" class="lock-error-msg">Sandi belum tepat. Coba ingat tanggal jadian kita ya ♡</div>
         <button type="button" class="lock-secondary-link" id="btn-back-to-date" style="display: none;">Kembali</button>
@@ -1483,7 +1818,8 @@
       <a href="#letter">Letters</a>
       <a href="#surprise">Surprise</a>
     </div>
-    <button class="btn btn-pill" id="btn-birthday-nav" aria-label="Ucapkan Selamat Ulang Tahun">Happy Birthday ♡</button>
+    <button class="btn btn-pill" id="btn-birthday-nav" aria-label="Ucapkan Selamat Ulang Tahun">Happy Birthday
+      ♡</button>
   </nav>
 
   <!-- HERO SECTION WITH CINEMATIC VIDEO BACKGROUND -->
@@ -1620,7 +1956,7 @@
         <p class="sec-desc">Kumpulan momen yang selalu membuatku tersenyum.</p>
       </div>
     </div>
-    
+
     <div class="filter-chips" id="filter-chips" role="tablist">
       <!-- Chips generated via JS -->
     </div>
@@ -1674,11 +2010,12 @@
     </div>
     <div class="girl-grid">
       <div class="portrait-box" id="girl-portrait" title="Ketuk untuk melihat foto">
-        <img src="galeri/4.webp" alt="Foto Sayang Tercinta" loading="lazy">
+        <img src="galeri/39.webp" alt="Foto Sayang Tercinta" loading="lazy">
       </div>
       <div>
         <h3 style="font-size: 32px; margin-bottom: 14px; font-weight: 500;">Hari ini dunia merayakan kamu.</h3>
-        <p>Terima kasih sudah menjadi seseorang yang selalu membawa kebaikan, kehangatan, dan warna dalam hidup banyak orang, terutama dalam hidupku.</p>
+        <p>Terima kasih sudah menjadi seseorang yang selalu membawa kebaikan, kehangatan, dan warna dalam hidup banyak
+          orang, terutama dalam hidupku.</p>
         <div class="badge-pill-list">
           <div class="badge-pill">Beautiful inside and out</div>
           <div class="badge-pill">Kind and thoughtful</div>
@@ -1691,12 +2028,14 @@
 
   <!-- DEDICATED WISHES TEASER SECTION -->
   <section id="wishes-teaser">
-    <div style="background: linear-gradient(135deg, rgba(197, 34, 51, 0.14) 0%, rgba(20, 14, 17, 0.95) 100%); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 36px 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;">
+    <div
+      style="background: linear-gradient(135deg, rgba(197, 34, 51, 0.14) 0%, rgba(20, 14, 17, 0.95) 100%); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 36px 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;">
       <div>
         <span class="sec-tag" style="margin-bottom: 8px;">KOTAK KENANGAN</span>
         <h2 style="font-size: clamp(28px, 3.8vw, 38px); margin-bottom: 8px;">Apa Kata Mereka?</h2>
         <p style="color: #ecd5cd; font-size: 15px; max-width: 520px; line-height: 1.6;">
-          Sebuah kotak kejutan digital berisi kumpulan ungkapan tulus, video kenangan, dan pesan suara dari sahabat serta orang-orang terdekatmu.
+          Sebuah kotak kejutan digital berisi kumpulan ungkapan tulus, video kenangan, dan pesan suara dari sahabat
+          serta orang-orang terdekatmu.
         </p>
       </div>
       <div>
@@ -1717,11 +2056,14 @@
       <div class="letter-envelope-box">
         <div class="stamp">SEALED</div>
         <span class="cursive-title">To my favorite human ♡</span>
-        <p style="margin-top: 10px; font-size: 13px; color: var(--tx-muted);">Sebuah catatan tulus dari lubuk hatiku.</p>
+        <p style="margin-top: 10px; font-size: 13px; color: var(--tx-muted);">Sebuah catatan tulus dari lubuk hatiku.
+        </p>
       </div>
       <div>
-        <h3 style="font-size: 30px; margin-bottom: 14px; font-weight: 500;">Sebuah surat kecil untuk seseorang yang berarti besar.</h3>
-        <p style="margin-bottom: 24px;">Maaf kalau kadang aku tidak bisa selalu mengungkapkan semua ini secara langsung. Jadi, aku tulis di sini, khusus untuk kamu.</p>
+        <h3 style="font-size: 30px; margin-bottom: 14px; font-weight: 500;">Sebuah surat kecil untuk seseorang yang
+          berarti besar.</h3>
+        <p style="margin-bottom: 24px;">Maaf kalau kadang aku tidak bisa selalu mengungkapkan semua ini secara langsung.
+          Jadi, aku tulis di sini, khusus untuk kamu.</p>
         <button class="btn" id="btn-open-letter">Baca Suratku →</button>
       </div>
     </div>
@@ -1733,7 +2075,8 @@
       <span class="sec-tag">0 7</span>
       <h2>Happy Birthday, My Love ♡</h2>
       <span class="sc-sub">Terima kasih sudah ada.</span>
-      <p>Semoga semua hal baik selalu menyertai kamu. Semoga kamu selalu bahagia, sehat, dan dikelilingi orang-orang yang tulus menyayangimu.</p>
+      <p>Semoga semua hal baik selalu menyertai kamu. Semoga kamu selalu bahagia, sehat, dan dikelilingi orang-orang
+        yang tulus menyayangimu.</p>
       <p>Aku akan selalu ada, di setiap cerita baik yang akan kamu jalani.</p>
       <p style="color: var(--tx-primary); font-size: 18px; margin: 20px 0;">
         <b>Selamat ulang tahun, sayang ♥</b>
@@ -1744,7 +2087,8 @@
         <!-- Populated via JS -->
       </div>
 
-      <span class="sc-sub" style="margin: 28px 0 20px; font-size: 32px;">Here's to more beautiful stories together. ♡</span>
+      <span class="sc-sub" style="margin: 28px 0 20px; font-size: 32px;">Here's to more beautiful stories together.
+        ♡</span>
       <br>
       <button class="btn" id="btn-love-you" style="padding: 14px 34px; font-size: 16px;">
         I Love You, Always →
@@ -1752,14 +2096,105 @@
     </div>
   </section>
 
-  <!-- FLOATING MUSIC PLAYER BUTTON -->
-  <button id="music-btn" aria-label="Putar atau jeda musik latar">
-    <div class="bars" aria-hidden="true">
-      <span></span><span></span><span></span>
+  <!-- FLOATING MUSIC PLAYER BUTTON & CONTROLS -->
+  <div id="music-player-wrap" role="region" aria-label="Pemutar Musik">
+    <button id="music-btn" aria-label="Putar atau jeda musik latar" title="Putar atau jeda musik">
+      <div class="bars" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+      <span id="music-text">Penjaga Hati</span>
+    </button>
+    <button id="music-change-btn" aria-label="Ganti Lagu" title="Pilih lagu lain">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 18V5l12-2v13"></path>
+        <circle cx="6" cy="18" r="3"></circle>
+        <circle cx="18" cy="16" r="3"></circle>
+      </svg>
+      <span>Ganti</span>
+    </button>
+  </div>
+  <audio id="bgm" loop preload="auto"></audio>
+
+  <!-- MODAL: MUSIC PICKER (OPENING WELCOME & SELECTOR) -->
+  <div id="music-picker-modal" role="dialog" aria-modal="true" aria-labelledby="music-modal-title">
+    <div class="music-picker-card">
+      <button class="music-modal-close" id="music-modal-close" aria-label="Tutup jendela musik">✕</button>
+      
+      <div class="music-modal-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        <span>Musik Pengiring Kenangan</span>
+      </div>
+      
+      <h2 id="music-modal-title" class="music-modal-heading">
+        Haiii, silahkan pilih musik duluu yaaa ♡
+      </h2>
+      <p class="music-modal-sub" id="music-modal-desc">
+        Pilih lagu favorit untuk menemani setiap cerita dan kenangan indah kita:
+      </p>
+
+      <div class="music-track-list" role="radiogroup" aria-label="Daftar Pilihan Lagu">
+        <!-- Track 1: Penjaga Hati (DEFAULT) -->
+        <label class="music-track-item active" for="track-penjaga-hati" data-track="penjaga-hati">
+          <input type="radio" name="bgm-selection" id="track-penjaga-hati" value="penjaga-hati" checked>
+          <div class="track-icon">
+            <span>🎵</span>
+          </div>
+          <div class="track-info">
+            <div class="track-title-row">
+              <span class="track-title">Penjaga Hati</span>
+              <span class="track-pill default-pill">Default ♡</span>
+            </div>
+            <span class="track-artist">Nadhif Basalamah</span>
+          </div>
+          <div class="track-check-indicator">
+            <span class="check-circle">✓</span>
+          </div>
+        </label>
+
+        <!-- Track 2: Bergema Selamanya -->
+        <label class="music-track-item" for="track-bergema-selamanya" data-track="bergema-selamanya">
+          <input type="radio" name="bgm-selection" id="track-bergema-selamanya" value="bergema-selamanya">
+          <div class="track-icon">
+            <span>🎵</span>
+          </div>
+          <div class="track-info">
+            <div class="track-title-row">
+              <span class="track-title">Bergema Sampai Selamanya</span>
+            </div>
+            <span class="track-artist">Nadhif Basalamah</span>
+          </div>
+          <div class="track-check-indicator">
+            <span class="check-circle">✓</span>
+          </div>
+        </label>
+
+        <!-- Track 3: Masa Ini -->
+        <label class="music-track-item" for="track-masa-ini" data-track="masa-ini">
+          <input type="radio" name="bgm-selection" id="track-masa-ini" value="masa-ini">
+          <div class="track-icon">
+            <span>🎵</span>
+          </div>
+          <div class="track-info">
+            <div class="track-title-row">
+              <span class="track-title">Masa Ini, Nanti, dan Masa Indah Lainnya</span>
+            </div>
+            <span class="track-artist">Lagu Kenangan Spesial</span>
+          </div>
+          <div class="track-check-indicator">
+            <span class="check-circle">✓</span>
+          </div>
+        </label>
+      </div>
+
+      <div class="music-modal-actions">
+        <button type="button" class="btn-play-selected" id="btn-start-with-music">
+          Lanjutkan & Putar Musik 🎵 ♡
+        </button>
+      </div>
     </div>
-    <span id="music-text">Putar Musik</span>
-  </button>
-  <audio id="bgm" loop preload="auto" src="bgm.mp3"></audio>
+  </div>
 
   <!-- MODAL: CINEMA STORY SLIDESHOW -->
   <div class="modal-overlay" id="cinema-modal" role="dialog" aria-modal="true" aria-label="Pemutar Cerita">
@@ -1793,8 +2228,8 @@
   <!-- JAVASCRIPT LOGIC -->
   <script>
     // Configuration & Data
-    const NAME = "Sayang";
-    const FROM = "Aku";
+    const NAME = "Shinta Dewi Setiasih";
+    const FROM = "Ahmad Nafi Maulana";
     const START_DATE = new Date("2023-11-14");
     const TOTAL_PHOTOS = 77;
 
@@ -1810,41 +2245,41 @@
     };
 
     const photoCaptions = {
-      1: "14 Nov 2023: Awal mula pertemuan yang membuka kisah manis",
-      2: "19 Nov 2023: Menikmati suasana berdua",
-      3: "21 Nov 2023: Obrolan manis tanpa beban",
-      4: "22 Nov 2023: Tatapan teduh penuh kehangatan",
-      5: "22 Nov 2023: Tertawa lepas bersamamu",
-      6: "7 Des 2023: Sore indah di tempat favorit",
-      7: "7 Des 2023: Senyuman ceriamu yang manis",
-      8: "10 Des 2023: Momen candid menggemaskan",
-      9: "10 Des 2023: Selalu ada tawa di sela cerita",
-      10: "10 Des 2023: Detik-detik sederhana yang berarti",
-      11: "10 Des 2023: Bahagia itu sesederhana ini",
-      12: "11 Des 2023: Menjelajah sudut kota bersama",
-      13: "16 Des 2023: Langit senja dan senyumanmu",
-      14: "16 Des 2023: Berjalan berdua menikmati waktu",
-      15: "16 Des 2023: Bersamamu tempat mana pun terasa indah",
-      16: "16 Des 2023: Jejak langkah kita berdua",
-      17: "18 Des 2023: Malam hangat yang tak terlupakan",
-      18: "21 Des 2023: Menutup tahun penuh rasa syukur",
-      19: "21 Des 2023: Saling menjaga dan melengkapi",
-      20: "14 Jan 2024: Awal tahun baru bersamamu",
-      21: "14 Jan 2024: Senyuman yang mengawali hari baik",
-      22: "24 Jan 2024: Sore santai penuh tawa",
-      23: "1 Feb 2024: Langkah baru di bulan cinta",
-      24: "2 Feb 2024: Bersama orang tersayang",
-      25: "21 Feb 2024: Momen hangat yang selalu kurindukan",
-      26: "29 Feb 2024: Hari spesial di tahun kabisat",
-      27: "2 Mar 2024: Udara sejuk dan kebersamaan",
-      28: "2 Mar 2024: Di setiap sudut selalu ada ceritamu",
-      29: "2 Mar 2024: Pemandangan indah di mata kita",
-      30: "22 Mar 2024: Senyum manismu yang menenangkan",
-      31: "18 Apr 2024: Menemani setiap langkahmu",
-      32: "2 Jun 2024: Hari-hari yang selalu berwarna",
-      33: "22 Jun 2024: Momen bahagia bersamamu",
-      34: "22 Jun 2024: Bersyukur atas kehadiranmu",
-      35: "22 Jun 2024: Menuju masa depan yang cerah bersama",
+      1: "Awal mula pertemuan yang membuka kisah manis",
+      2: "Menikmati suasana berdua",
+      3: "Obrolan manis tanpa beban",
+      4: "Tatapan teduh penuh kehangatan",
+      5: "Tertawa lepas bersamamu",
+      6: "Sore indah di tempat favorit",
+      7: "Senyuman ceriamu yang manis",
+      8: "Detik demi detik bersamamu",
+      9: "Selalu ada tawa di sela cerita",
+      10: "Detik-detik sederhana yang berarti",
+      11: "Bahagia itu sesederhana ini",
+      12: "Menjelajah sudut kota bersama",
+      13: "Langit senja dan senyumanmu",
+      14: "Berjalan berdua menikmati waktu",
+      15: "Bersamamu tempat mana pun terasa indah",
+      16: "Jejak langkah kita berdua",
+      17: "Malam hangat yang tak terlupakan",
+      18: "Menutup tahun penuh rasa syukur",
+      19: "Saling menjaga dan melengkapi",
+      20: "Awal tahun baru bersamamu",
+      21: "Senyuman yang mengawali hari baik",
+      22: "Sore santai penuh tawa",
+      23: "Langkah baru di bulan cinta",
+      24: "Bersama orang tersayang",
+      25: "Momen hangat yang selalu kurindukan",
+      26: "Hari spesial di tahun kabisat",
+      27: "Udara sejuk dan kebersamaan",
+      28: "Di setiap sudut selalu ada ceritamu",
+      29: "Pemandangan indah di mata kita",
+      30: "Senyum manismu yang menenangkan",
+      31: "Menemani setiap langkahmu",
+      32: "Hari-hari yang selalu berwarna",
+      33: "Momen bahagia bersamamu",
+      34: "Bersyukur atas kehadiranmu",
+      35: "Menuju masa depan yang cerah bersama",
       36: "Momen manis berdua yang selalu berkesan",
       37: "Senyum hangatmu yang selalu menenangkan",
       38: "Tawa ceria yang menghiasi setiap langkah",
@@ -1875,7 +2310,7 @@
       63: "Genggaman tangan yang menenangkan",
       64: "Tak pernah bosan mendengar tawamu",
       65: "Perjalanan indah yang kita nikmati",
-      66: "Detik demi detik bersamamu",
+      66: "Momen candid menggemaskan",
       67: "Tatapan mata yang selalu kuingat",
       68: "Satu lagi kenangan manis kita",
       69: "Kenyamanan yang hanya ada padamu",
@@ -1892,15 +2327,14 @@
     // 1. Trending Now cards (Balanced mix of Videos & Photos)
     const trendingItems = [
       {
-        type: "video",
-        src: "galeri/1.mp4",
-        poster: "galeri/1.webp",
-        title: "The Most Beautiful Story",
-        sub: "Hero Video Clip"
+        type: "photo",
+        id: 28,
+        title: "The Beautiful Story",
+        sub: "our first long trip"
       },
       {
         type: "photo",
-        id: 4,
+        id: 38,
         title: "The Birthday Girl",
         sub: "Our Star"
       },
@@ -1926,7 +2360,7 @@
       },
       {
         type: "photo",
-        id: 6,
+        id: 14,
         title: "Our Adventures",
         sub: "Sweet Escape"
       },
@@ -1939,25 +2373,19 @@
       },
       {
         type: "photo",
-        id: 35,
+        id: 59,
         title: "A Future With You",
         sub: "Forever & Always"
       },
       {
         type: "photo",
-        id: 8,
+        id: 66,
         title: "The Little Things",
         sub: "Everyday Love"
       },
       {
         type: "photo",
-        id: 50,
-        title: "Golden Moments",
-        sub: "Memories"
-      },
-      {
-        type: "photo",
-        id: 66,
+        id: 8,
         title: "Endless Smiles",
         sub: "Pure Happiness"
       }
@@ -2010,7 +2438,7 @@
     $('#tr-next').onclick = () => $('#trending-row').scrollBy({ left: 240, behavior: 'smooth' });
 
     // 2. Ini Tentang Kita Ribbon
-    const ribbonPhotos = [3, 5, 9, 11, 18];
+    const ribbonPhotos = [1, 14, 22, 49, 55];
     $('#ribbon-row').innerHTML = ribbonPhotos.map(id => `
       <div class="ribbon-card" onclick="openLightbox(${id})">
         <img src="galeri/${id}.webp" alt="Foto Kenangan" loading="lazy">
@@ -2092,7 +2520,7 @@
 
     // 5. Little Things I Love About You
     const littleThings = [
-      { num: "01", text: "Cara kamu tertawa yang selalu menular." },
+      { num: "01", text: "Cara kamu tertawa yang selalu kuingat." },
       { num: "02", text: "Cara kamu selalu ada, bahkan di hari-hari sulit." },
       { num: "03", text: "Semangatmu dalam menjalani hal yang kamu suka." },
       { num: "04", text: "Kebaikan hatimu untuk semua orang." },
@@ -2110,7 +2538,7 @@
     $('#lt-next').onclick = () => $('#things-row').scrollBy({ left: 250, behavior: 'smooth' });
 
     // 6. Places We've Been
-    const placePhotos = [19,29, 28, 25];
+    const placePhotos = [19, 29, 55, 67, 74, 75, 43];
     $('#places-grid').innerHTML = placePhotos.map(id => `
       <div class="place-card" onclick="openLightbox(${id})">
         <img src="galeri/${id}.webp" alt="Places We've Been" loading="lazy">
@@ -2173,7 +2601,7 @@
       vidEl.style.display = 'block';
       vidEl.src = src;
       vidEl.currentTime = 0;
-      vidEl.play().catch(() => {});
+      vidEl.play().catch(() => { });
       $('#lightbox-prev').style.display = 'none';
       $('#lightbox-next').style.display = 'none';
       $('#lightbox-caption').textContent = title || "Video Kenangan Indah ♡";
@@ -2241,11 +2669,11 @@
     // 11. Cinema Story Slideshow
     const STORY_SLIDES = [
       { id: 1, text: "Awalnya, hanya sebuah pertemuan kecil yang tak terduga..." },
-      { id: 6, text: "Lalu percakapan sederhana yang perlahan terasa begitu istimewa..." },
-      { id: 13, text: "Tawamu yang manis menjadi lagu favorit yang selalu kurindukan..." },
-      { id: 22, text: "Setiap tempat terasa berkali-kali lipat lebih indah saat ada kamu..." },
-      { id: 30, text: "Dan hari ini, dunia turut tersenyum merayakan hadirnya dirimu..." },
-      { id: 35, text: "Selamat ulang tahun, " + NAME + " ♡ Selamanya bersamamu." }
+      { id: 12, text: "Lalu percakapan sederhana yang perlahan terasa begitu istimewa..." },
+      { id: 46, text: "Tawamu yang manis menjadi lagu favorit yang selalu kurindukan..." },
+      { id: 44, text: "Setiap tempat terasa berkali-kali lipat lebih indah saat ada kamu..." },
+      { id: 54, text: "Dan hari ini, dunia turut tersenyum merayakan hadirnya dirimu..." },
+      { id: 72, text: "Selamat ulang tahun, " + NAME + " ♡ Selamanya bersamamu." }
     ];
 
     let cinemaTimer;
@@ -2304,32 +2732,155 @@
     $('#btn-love-you').onclick = triggerHeartShower;
     $('#btn-birthday-nav').onclick = triggerHeartShower;
 
-    // 13. Music Controller
+    // 13. Music Controller & Music Selector Modal
+    const PLAYLIST = [
+      {
+        id: 'penjaga-hati',
+        title: 'Penjaga Hati',
+        artist: 'Nadhif Basalamah',
+        src: 'penjaga hati.mp3',
+        isDefault: true
+      },
+      {
+        id: 'bergema-selamanya',
+        title: 'Bergema Sampai Selamanya',
+        artist: 'Nadhif Basalamah',
+        src: 'Nadhif Basalamah - bergema sampai selamanya (Official Lyric Video).mp3',
+        isDefault: false
+      },
+      {
+        id: 'masa-ini',
+        title: 'Masa Ini, Nanti, dan Masa Indah Lainnya',
+        artist: 'Lagu Kenangan',
+        src: 'Masa ini, Nanti, dan Masa Indah Lainnya.mp3',
+        isDefault: false
+      }
+    ];
+
     const audio = $('#bgm');
     const musicBtn = $('#music-btn');
     const musicText = $('#music-text');
+    const musicChangeBtn = $('#music-change-btn');
+    const musicModal = $('#music-picker-modal');
+    const musicModalHeading = $('#music-modal-title');
+    const musicModalSub = $('#music-modal-desc');
+    const musicModalClose = $('#music-modal-close');
+    const btnPlaySelected = $('#btn-start-with-music');
+    const trackItems = document.querySelectorAll('.music-track-item');
+
+    let currentTrackId = localStorage.getItem('user_bgm_choice') || 'penjaga-hati';
+
+    const getTrack = (id) => PLAYLIST.find(t => t.id === id) || PLAYLIST[0];
+
+    const applyTrackSelection = (trackId) => {
+      trackItems.forEach(item => {
+        const radio = item.querySelector('input[type="radio"]');
+        const isMatch = radio && radio.value === trackId;
+        if (radio) radio.checked = isMatch;
+        item.classList.toggle('active', isMatch);
+      });
+    };
 
     const updateMusicUI = () => {
       const isPlaying = !audio.paused;
       musicBtn.classList.toggle('playing', isPlaying);
-      musicText.textContent = isPlaying ? 'Jeda Musik' : 'Putar Musik';
+      const activeTrack = getTrack(currentTrackId);
+      musicText.textContent = activeTrack ? activeTrack.title : (isPlaying ? 'Jeda Musik' : 'Putar Musik');
+      musicBtn.setAttribute('title', isPlaying ? `Jeda Musik (${activeTrack.title})` : `Putar Musik (${activeTrack.title})`);
     };
 
+    const loadTrack = (trackId) => {
+      const track = getTrack(trackId);
+      currentTrackId = track.id;
+      localStorage.setItem('user_bgm_choice', track.id);
+      audio.src = encodeURI(track.src);
+      updateMusicUI();
+      applyTrackSelection(track.id);
+    };
+
+    const playMusic = () => {
+      if (!audio.src || !audio.src.includes('.mp3')) {
+        loadTrack(currentTrackId);
+      }
+      return audio.play().then(() => {
+        updateMusicUI();
+      }).catch(() => { });
+    };
+
+    // Initialize initial track (default to Penjaga Hati)
+    loadTrack(currentTrackId);
     audio.volume = 0.7;
     audio.onplay = updateMusicUI;
     audio.onpause = updateMusicUI;
 
-    const playMusic = () => {
-      audio.play().catch(() => {});
+    // Track item click in modal
+    trackItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const radio = item.querySelector('input[type="radio"]');
+        if (radio) {
+          radio.checked = true;
+          applyTrackSelection(radio.value);
+        }
+      });
+    });
+
+    const openMusicModal = (isChangeMode = false) => {
+      if (isChangeMode) {
+        musicModalHeading.textContent = 'Ganti Musik Pengiring ♡';
+        musicModalSub.textContent = 'Pilih lagu yang ingin kamu putar sekarang:';
+        btnPlaySelected.textContent = 'Putar Lagu Ini 🎵';
+        if (musicModalClose) musicModalClose.classList.add('visible');
+      } else {
+        musicModalHeading.textContent = 'Haiii, silahkan pilih musik duluu yaaa ♡';
+        musicModalSub.textContent = 'Pilih lagu favorit untuk menemani setiap cerita dan kenangan indah kita:';
+        btnPlaySelected.textContent = 'Lanjutkan & Putar Musik 🎵 ♡';
+        if (musicModalClose) musicModalClose.classList.remove('visible');
+      }
+      applyTrackSelection(currentTrackId);
+      musicModal.classList.remove('hidden');
     };
 
-    musicBtn.onclick = (e) => {
+    const closeMusicModal = () => {
+      musicModal.classList.add('hidden');
+    };
+
+    // Confirm button inside modal
+    btnPlaySelected.addEventListener('click', () => {
+      const checkedRadio = document.querySelector('input[name="bgm-selection"]:checked');
+      const selectedId = checkedRadio ? checkedRadio.value : 'penjaga-hati';
+      loadTrack(selectedId);
+      playMusic();
+      closeMusicModal();
+    });
+
+    // Close button (visible when opened via Ganti)
+    if (musicModalClose) {
+      musicModalClose.addEventListener('click', closeMusicModal);
+    }
+
+    // Floating button controls
+    musicBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       audio.paused ? playMusic() : audio.pause();
-    };
+    });
 
+    if (musicChangeBtn) {
+      musicChangeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openMusicModal(true);
+      });
+    }
+
+    // Close when clicking outside card (only when in change mode)
+    musicModal.addEventListener('click', (e) => {
+      if (e.target === musicModal && musicModalClose && musicModalClose.classList.contains('visible')) {
+        closeMusicModal();
+      }
+    });
+
+    // Fallback click listener to trigger playback if user interactions occurred
     document.addEventListener('pointerdown', () => {
-      if (audio.paused) {
+      if (audio.paused && musicModal.classList.contains('hidden')) {
         playMusic();
       }
     }, { once: true });
@@ -2342,6 +2893,9 @@
     // 15. Keyboard Accessibility
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
+        if (musicModal && !musicModal.classList.contains('hidden') && musicModalClose && musicModalClose.classList.contains('visible')) {
+          closeMusicModal();
+        }
         if ($('#cinema-modal').classList.contains('open')) stopCinema();
         if ($('#letter-modal').classList.contains('open')) closeLetter();
         if ($('#lightbox-modal').classList.contains('open')) closeLightbox();
@@ -2452,4 +3006,5 @@
     })();
   </script>
 </body>
+
 </html>
